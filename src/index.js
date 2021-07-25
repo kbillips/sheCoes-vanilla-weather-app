@@ -35,6 +35,37 @@ function formatDay(timestamp) {
     return days[day];
 }
 
+function displayForecast() {
+    let forecastElement = document.querySelector("#forecast");
+    let forecastHtml = `<div class ="row">`;
+    let days = [
+    "Sun",
+    "Mon",
+    "Tues",
+    "Wed",
+    "Thurs",
+    "Fri",
+    "Sat"];
+    days.forEach(function(day){
+    forecastHtml = forecastHtml + 
+            `<div class="col-2 forecast today">
+                <div class="day">${day}</div>
+                <img 
+                    src="#"
+                    alt=""
+                    width="42"
+                />
+                <div class="forecast-temp">
+                    <span class=forecast-temp-max>89º</span>
+                    <span class=forecast-temp-min> 72º</span>
+                </div>
+            </div>`;
+    });
+
+    forecastHtml = forecastHtml + `</div>`
+    forecastElement.innerHTML = forecastHtml;
+    }
+
 function updateWeather(response) {
     console.log(response);
     let town = document.querySelector(".town");
@@ -102,3 +133,4 @@ let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 search("Reykjavik");
+displayForecast();
