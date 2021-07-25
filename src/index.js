@@ -41,11 +41,10 @@ let apiUrl=`https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.la
 axios.get(apiUrl).then(displayForecast);
 }
 
-function displayForecast(response) {
-    console.log(response.data);
-    let forecastElement = document.querySelector("#forecast");
-    let forecastHtml = `<div class ="row">`;
-    let days = [
+function formatDay(timestamp){
+let date = new Date(timestamp * 1000);
+let day = date.getDay();
+let days = [
     "Sun",
     "Mon",
     "Tues",
@@ -53,20 +52,29 @@ function displayForecast(response) {
     "Thurs",
     "Fri",
     "Sat"];
-    days.forEach(function(day){
+return days[day];
+}
+
+function displayForecast(response) {
+    let forecast = response.data.daily;
+    let forecastElement = document.querySelector("#forecast");
+    let forecastHtml = `<div class ="row">`;
+    forecast.forEach(function(forecastDay, index){
+        if (index < 6){
     forecastHtml = forecastHtml + 
             `<div class="col-2 forecast today">
-                <div class="day">${day}</div>
+                <div class="day">${formatDay(forecastDay.dt)}</div>
                 <img 
-                    src="#"
+                    src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
                     alt=""
                     width="42"
                 />
                 <div class="forecast-temp">
-                    <span class=forecast-temp-max>89º</span>
-                    <span class=forecast-temp-min> 72º</span>
+                    <span class=forecast-temp-max> ${Math.round(forecastDay.temp.max)}º</span>
+                    <span class=forecast-temp-min> ${Math.round(forecastDay.temp.min)}º</span>
                 </div>
             </div>`;
+    }
     });
 
     forecastHtml = forecastHtml + `</div>`
