@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Weather</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"/>
+      <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com" />
+      <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+            <div class="search-area">
+                <form id="search" class="mb-3">
+                    <div class="row">
+                        <div class="col-9">
+                            <input
+                            id="search-input"
+                            type="search"
+                            class="form-control"
+                            placeholder="Enter city name"
+                            autofocus="on"
+                            />
+                        </div>
+                        <div class="col-3">
+                            <input type="submit" 
+                            value="Search"
+                            class="btn btn-primary w-100" />
+                        </div>
+                    </div>
+                 </form>
+          </div>
+          <div class="row currentWeatherArea">
+            <div class="col-6 currentLocation">
+                <span class="town">Bellefonte</span>
+                <div>Last updated: <span class="last-updated">Last Updated: Sunday 9:00</span></div>
+                <div class="current-conditions">Cloudy</div>
+            </div>
+            <div class="col-6 current"> </div>
+                <div class="col-6" id="current-temp">
+                    <div class="clearfix weather-temperature">
+                        <img src="" alt="Clear" id="icon" class="float-left" />
+                        <span class="float-left">
+                            <strong class="currentTemp">89</strong>
+                            <span class="units">
+                                <a href="#" id="fahrenheit-link" class="active">ºF</a> |
+                                <a href="#" id=celsius-link>ºC</a></span>
+                        </span>
+                    </div>
+                </div>
+           
+            <div class="col-6 current-conditions">
+                <ul>
+                    <li>Humidity: <span class="humidity">Humidity: 80%</span>%</li>
+                    <li>Wind: <span class="wind">Wind: 4 mph</span>mph</li>
+                </ul>
+            </div>
+        </div>
+        </div>
+        <br />
+        </div>
+            <small><a href="https://github.com/kbillips/sheCodes-Vanilla-weather-app" target="_blank">Opensource code</a> by Kim Hyde</a></small>
+      </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>
